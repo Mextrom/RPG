@@ -14,6 +14,9 @@ class ARPGPlayerController : public APlayerController
 public:
 	ARPGPlayerController();
 
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	class AInteractable* CurrentInteractable;
+
 protected:
 	/** True if the controlled character should navigate to the mouse cursor. */
 	uint32 bMoveToMouseCursor : 1;

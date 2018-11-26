@@ -11,6 +11,8 @@
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "Materials/Material.h"
 #include "Engine/World.h"
+#include "Interactable.h"
+#include "RPGPlayerController.h"
 
 ARPGCharacter::ARPGCharacter()
 {
@@ -87,4 +89,37 @@ void ARPGCharacter::Tick(float DeltaSeconds)
 			CursorToWorld->SetWorldRotation(CursorR);
 		}
 	}
+
+	CheckForInteractables();
+}
+
+void ARPGCharacter::CheckForInteractables()
+{
+	FHitResult HitResult;
+
+	FVector StartTrace = TopDownCameraComponent->GetComponentLocation();
+	FVector EndTrace = TopDownCameraComponent->GetComponentRotation().Vector() * 2000.0f;
+	FCollisionQueryParams Params;
+	Params.AddIgnoredActor(this);
+	GetController();
+
+	ARPGPlayerController* Controller = Cast<ARPGPlayerController>(GetController());
+	if (Controller)
+	{
+		UWorld* World = GetWorld();
+		if (World)
+		{
+			if (World->LineTraceSingleByChannel(HitResult, StartTrace, EndTrace, ECC_Visibility, Params))
+			{
+				AInteractable* Interactable = Cast<AInteractable>(HitResult.GetActor());
+				if (Interactable)
+				{
+					Controller->CurrentInteractable = Interactable;
+					return;
+				}
+			}
+		}
+	}
+
+	Controller->CurrentInteractable = nullptr;
 }
