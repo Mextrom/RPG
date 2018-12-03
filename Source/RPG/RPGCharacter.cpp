@@ -101,7 +101,6 @@ void ARPGCharacter::CheckForInteractables()
 	FVector EndTrace = TopDownCameraComponent->GetComponentRotation().Vector() * 2000.0f;
 	FCollisionQueryParams Params;
 	Params.AddIgnoredActor(this);
-	GetController();
 
 	ARPGPlayerController* Controller = Cast<ARPGPlayerController>(GetController());
 	if (Controller)

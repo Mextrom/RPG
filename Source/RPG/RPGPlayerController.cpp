@@ -6,6 +6,8 @@
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "RPGCharacter.h"
 #include "Engine/World.h"
+#include "Interactable.h"
+#include "RPGGameMode.h"
 
 ARPGPlayerController::ARPGPlayerController()
 {
@@ -37,6 +39,8 @@ void ARPGPlayerController::SetupInputComponent()
 	InputComponent->BindTouch(EInputEvent::IE_Repeat, this, &ARPGPlayerController::MoveToTouchLocation);
 
 	InputComponent->BindAction("ResetVR", IE_Pressed, this, &ARPGPlayerController::OnResetVR);
+
+    InputComponent->BindAction("Interact", IE_Pressed, this, &ARPGPlayerController::Interact);
 }
 
 void ARPGPlayerController::OnResetVR()
@@ -109,4 +113,29 @@ void ARPGPlayerController::OnSetDestinationReleased()
 {
 	// clear flag to indicate we should stop updating the destination
 	bMoveToMouseCursor = false;
+}
+
+void ARPGPlayerController::Interact()
+{
+    if (CurrentInteractable)
+    {
+        CurrentInteractable->Interact(this);
+    }
+}
+
+void ARPGPlayerController::AddItemToInventory(FName ID)
+{
+    ARPGGameMode* GameMode = Cast<ARPGGameMode>(GetWorld()->GetAuthGameMode());
+    if (GameMode)
+    {
+        UDataTable* ItemTable = GameMode->GetItemDB();
+        if (ItemTable)
+        {
+            FInventoryItem* ItemToAdd = ItemTable->FindRow<FInventoryItem>(ID, "");
+            if (ItemToAdd)
+            {
+                Inventory.Add(*ItemToAdd);
+            }
+        }
+    }
 }

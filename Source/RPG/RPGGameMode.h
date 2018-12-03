@@ -13,6 +13,12 @@ class ARPGGameMode : public AGameModeBase
 
 public:
 	ARPGGameMode();
+
+    class UDataTable* GetItemDB() const;
+
+protected:
+    UPROPERTY(EditDefaultsOnly)
+    class UDataTable* ItemDB;
 };
 
 

@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\RPG.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{39316B86-C3EE-41DB-A30C-09577D8D8E81}</UniqueIdentifier>
+      <UniqueIdentifier>{F1BE0870-E485-427F-BEB7-C6FEE03D40CE}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\RPG.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{3E8E615B-351A-42FC-8C74-98BD3ED04BFD}</UniqueIdentifier>
+      <UniqueIdentifier>{0917661C-0969-4488-AB83-0CFF0BD67868}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,8 +30,20 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\RPG">
-      <UniqueIdentifier>{262E9BE8-0422-4AC6-A21D-A3888096EDBB}</UniqueIdentifier>
+      <UniqueIdentifier>{E3B74BCC-AE79-4CAF-AAD4-145B6352FEF3}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\RPG\Interactable.cpp">
+      <Filter>Source\RPG</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\RPG\Interactable.h">
+      <Filter>Source\RPG</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\RPG\Pickup.cpp">
+      <Filter>Source\RPG</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\RPG\Pickup.h">
+      <Filter>Source\RPG</Filter>
+    </ClInclude>
     <None Include="..\..\Source\RPG\RPG.Build.cs">
       <Filter>Source\RPG</Filter>
     </None>
@@ -47,12 +59,6 @@
     <ClInclude Include="..\..\Source\RPG\RPGCharacter.h">
       <Filter>Source\RPG</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\RPG\RPGGameMode.cpp">
-      <Filter>Source\RPG</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\RPG\RPGGameMode.h">
-      <Filter>Source\RPG</Filter>
-    </ClInclude>
     <ClCompile Include="..\..\Source\RPG\RPGPlayerController.cpp">
       <Filter>Source\RPG</Filter>
     </ClCompile>
@@ -61,25 +67,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\RPG\RpgGM.h">
+    <ClCompile Include="..\..\Source\RPG\RPGGameMode.cpp">
       <Filter>Source\RPG</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\RPG\Interactable.h">
-      <Filter>Source\RPG</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\RPG\Pickup.h">
-      <Filter>Source\RPG</Filter>
-    </ClInclude>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\RPG\RpgGM.cpp">
+    <ClInclude Include="..\..\Source\RPG\RPGGameMode.h">
       <Filter>Source\RPG</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\RPG\Interactable.cpp">
-      <Filter>Source\RPG</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\RPG\Pickup.cpp">
-      <Filter>Source\RPG</Filter>
-    </ClCompile>
+    </ClInclude>
   </ItemGroup>
 </Project>

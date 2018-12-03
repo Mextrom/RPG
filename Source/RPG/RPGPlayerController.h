@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "RPGCharacter.h"
 #include "RPGPlayerController.generated.h"
 
 UCLASS()
@@ -16,6 +17,12 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
 	class AInteractable* CurrentInteractable;
+
+    UFUNCTION(BlueprintCallable, Category = "Utils")
+    void AddItemToInventory(FName ID);
+
+    UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+    TArray<FInventoryItem> Inventory;
 
 protected:
 	/** True if the controlled character should navigate to the mouse cursor. */
@@ -41,6 +48,8 @@ protected:
 	/** Input handlers for SetDestination action. */
 	void OnSetDestinationPressed();
 	void OnSetDestinationReleased();
+
+    void Interact();
 };
 
 
