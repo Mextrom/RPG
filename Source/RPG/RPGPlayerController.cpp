@@ -24,6 +24,10 @@ void ARPGPlayerController::PlayerTick(float DeltaTime)
 	{
 		MoveToMouseCursor();
 	}
+    else
+    {
+        Interact();
+    }
 }
 
 void ARPGPlayerController::SetupInputComponent()
@@ -68,9 +72,23 @@ void ARPGPlayerController::MoveToMouseCursor()
 
 		if (Hit.bBlockingHit)
 		{
-			// We hit something, move there
-			SetNewMoveDestination(Hit.ImpactPoint);
+            AInteractable* Interactable = Cast<AInteractable>(Hit.GetActor());
+            if (Interactable)
+            {
+                CurrentInteractable = Interactable;
+            }
+            else
+            {
+                CurrentInteractable = nullptr;
+            }
+
+            // We hit something, move there
+            SetNewMoveDestination(Hit.ImpactPoint);
 		}
+        else
+        {
+            CurrentInteractable = nullptr;
+        }
 	}
 }
 
@@ -119,7 +137,15 @@ void ARPGPlayerController::Interact()
 {
     if (CurrentInteractable)
     {
-        CurrentInteractable->Interact(this);
+        ARPGCharacter* MyPawn = Cast<ARPGCharacter>(GetPawn());
+        if (MyPawn)
+        {
+            float const Distance = FVector::Dist(CurrentInteractable->GetActorLocation(), MyPawn->GetActorLocation());
+            if (Distance <= 200.0f)
+            {
+                CurrentInteractable->Interact(this);
+            }
+        }
     }
 }
 

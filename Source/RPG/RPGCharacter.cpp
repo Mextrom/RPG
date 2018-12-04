@@ -90,7 +90,7 @@ void ARPGCharacter::Tick(float DeltaSeconds)
 		}
 	}
 
-	CheckForInteractables();
+	//CheckForInteractables();
 }
 
 void ARPGCharacter::CheckForInteractables()
@@ -98,7 +98,7 @@ void ARPGCharacter::CheckForInteractables()
 	FHitResult HitResult;
 
 	FVector StartTrace = TopDownCameraComponent->GetComponentLocation();
-	FVector EndTrace = TopDownCameraComponent->GetComponentRotation().Vector() * 2000.0f;
+	FVector EndTrace = TopDownCameraComponent->GetForwardVector() * 2000.0f + StartTrace;
 	FCollisionQueryParams Params;
 	Params.AddIgnoredActor(this);
 
