@@ -12,7 +12,7 @@
 ARPGPlayerController::ARPGPlayerController()
 {
 	bShowMouseCursor = true;
-	DefaultMouseCursor = EMouseCursor::Crosshairs;
+	DefaultMouseCursor = EMouseCursor::Default;
 }
 
 void ARPGPlayerController::PlayerTick(float DeltaTime)
@@ -44,7 +44,7 @@ void ARPGPlayerController::SetupInputComponent()
 
 	InputComponent->BindAction("ResetVR", IE_Pressed, this, &ARPGPlayerController::OnResetVR);
 
-    InputComponent->BindAction("Interact", IE_Pressed, this, &ARPGPlayerController::Interact);
+    //InputComponent->BindAction("Interact", IE_Pressed, this, &ARPGPlayerController::Interact);
 }
 
 void ARPGPlayerController::OnResetVR()
@@ -161,6 +161,55 @@ void ARPGPlayerController::AddItemToInventory(FName ID)
             if (ItemToAdd)
             {
                 Inventory.Add(*ItemToAdd);
+            }
+        }
+    }
+}
+
+void ARPGPlayerController::CraftItem(FInventoryItem ItemA, FInventoryItem ItemB, ARPGPlayerController * Controller)
+{
+    ARPGCharacter* MyPawn = Cast<ARPGCharacter>(GetPawn());
+
+    for (FCraftingInfo Craft : ItemB.CraftCombinations)
+    {
+        if (Craft.ComponentID == ItemA.ItemID)
+        {
+            if (Craft.bDestroyItemA)
+            {
+                Inventory.RemoveSingle(ItemA);
+            }
+
+            if (Craft.bDestroyItemB)
+            {
+                Inventory.RemoveSingle(ItemB);
+            }
+
+            AddItemToInventory(Craft.ProductID);
+            if (MyPawn)
+            {
+                MyPawn->ReloadInventory();
+            }
+        }
+    }
+
+    for (FCraftingInfo Craft : ItemA.CraftCombinations)
+    {
+        if (Craft.ComponentID == ItemB.ItemID)
+        {
+            if (Craft.bDestroyItemA)
+            {
+                Inventory.RemoveSingle(ItemA);
+            }
+
+            if (Craft.bDestroyItemB)
+            {
+                Inventory.RemoveSingle(ItemB);
+            }
+
+            AddItemToInventory(Craft.ProductID);
+            if (MyPawn)
+            {
+                MyPawn->ReloadInventory();
             }
         }
     }

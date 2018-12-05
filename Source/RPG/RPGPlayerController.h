@@ -18,11 +18,14 @@ public:
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
 	class AInteractable* CurrentInteractable;
 
+    UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+    TArray<FInventoryItem> Inventory;
+
     UFUNCTION(BlueprintCallable, Category = "Utils")
     void AddItemToInventory(FName ID);
 
-    UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
-    TArray<FInventoryItem> Inventory;
+    UFUNCTION(BlueprintCallable, Category = "Utils")
+    void CraftItem(FInventoryItem ItemA, FInventoryItem ItemB, ARPGPlayerController* Controller);
 
 protected:
 	/** True if the controlled character should navigate to the mouse cursor. */

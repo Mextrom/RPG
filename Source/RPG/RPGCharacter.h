@@ -92,6 +92,9 @@ public:
 	/** Returns CursorToWorld subobject **/
 	FORCEINLINE class UDecalComponent* GetCursorToWorld() { return CursorToWorld; }
 
+    UFUNCTION(BlueprintImplementableEvent)
+    void ReloadInventory();
+
 protected:
 	void CheckForInteractables();
 
