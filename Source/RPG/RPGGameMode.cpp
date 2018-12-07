@@ -7,15 +7,15 @@
 
 ARPGGameMode::ARPGGameMode()
 {
-	// use our custom PlayerController class
-	PlayerControllerClass = ARPGPlayerController::StaticClass();
+    // use our custom PlayerController class
+    PlayerControllerClass = ARPGPlayerController::StaticClass();
 
-	// set default pawn class to our Blueprinted character
-	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/TopDownCPP/Blueprints/TopDownCharacter"));
-	if (PlayerPawnBPClass.Class != NULL)
-	{
-		DefaultPawnClass = PlayerPawnBPClass.Class;
-	}
+    // set default pawn class to our Blueprinted character
+    static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/TopDownCPP/Blueprints/TopDownCharacter"));
+    if (PlayerPawnBPClass.Class != NULL)
+    {
+        DefaultPawnClass = PlayerPawnBPClass.Class;
+    }
 
     static ConstructorHelpers::FObjectFinder<UDataTable> BP_ItemDB(TEXT("DataTable'/Game/Data/ItemDB.ItemDB'"));
     ItemDB = BP_ItemDB.Object;

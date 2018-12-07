@@ -507,6 +507,10 @@
     <None Include="..\..\Config\DefaultEngine.ini" />
     <None Include="..\..\Config\DefaultGame.ini" />
     <None Include="..\..\Config\DefaultInput.ini" />
+	<ClCompile Include="..\..\Source\RPG\FInventoryItem.cpp" />
+	<ClInclude Include="..\..\Source\RPG\FInventoryItem.h" />
+    <ClCompile Include="..\..\Source\RPG\FCraftingInfo.cpp" />
+	<ClInclude Include="..\..\Source\RPG\FCraftingInfo.h" />
     <ClCompile Include="..\..\Source\RPG\Interactable.cpp" />
     <ClInclude Include="..\..\Source\RPG\Interactable.h" />
     <ClCompile Include="..\..\Source\RPG\Pickup.cpp" />

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "FInventoryItem.h"
 #include "RPGCharacter.h"
 #include "RPGPlayerController.generated.h"
 

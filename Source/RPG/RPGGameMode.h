@@ -20,6 +20,3 @@ protected:
     UPROPERTY(EditDefaultsOnly)
     class UDataTable* ItemDB;
 };
-
-
-

@@ -65,14 +65,22 @@
     <ClInclude Include="..\..\Source\RPG\RPGPlayerController.h">
       <Filter>Source\RPG</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Source\RPG\RPGGameMode.cpp">
+	<ClCompile Include="..\..\Source\RPG\RPGGameMode.cpp">
       <Filter>Source\RPG</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\RPG\RPGGameMode.h">
+	<ClInclude Include="..\..\Source\RPG\RPGGameMode.h">
+      <Filter>Source\RPG</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\RPG\FInventoryItem.cpp">
+      <Filter>Source\RPG</Filter>
+    </ClCompile>
+	<ClInclude Include="..\..\Source\RPG\FInventoryItem.h">
+      <Filter>Source\RPG</Filter>
+    </ClInclude>
+	<ClCompile Include="..\..\Source\RPG\FCraftingInfo.cpp">
+      <Filter>Source\RPG</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\RPG\FCraftingInfo.h">
       <Filter>Source\RPG</Filter>
     </ClInclude>
   </ItemGroup>
