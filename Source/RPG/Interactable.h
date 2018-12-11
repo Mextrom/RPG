@@ -24,9 +24,6 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void Interact(APlayerController* Controller);
 
-	UFUNCTION(BlueprintCallable, Category = "Pickup")
-	FString GetUseText() const { return FString::Printf(TEXT("%s : press E to %s"), *Name, *Action); }
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
